@@ -21,7 +21,7 @@ namespace Sodiqwebapplication.Services.Impl
         public ItemServiceImpl(ItemRepository itemRepository, IConfiguration configuration)
         {
             this._ItemRepository = itemRepository;
-            this._SyncUrl = configuration.GetValue<String>("syncUrl");
+            this._SyncUrl = configuration.GetValue<String>("SyncUrl");
             this._HttpClient = new HttpClient();
         }
         public async void syncWithApi()
