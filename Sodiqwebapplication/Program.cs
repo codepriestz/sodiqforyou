@@ -17,8 +17,17 @@ namespace Sodiqwebapplication
             CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) {
+            var config = new ConfigurationBuilder()
+           .SetBasePath(Directory.GetCurrentDirectory())
+           .AddJsonFile("appsettings.json", optional: false)
+           .Build();
+
+            return  WebHost.CreateDefaultBuilder(args)
+                 .UseKestrel(options =>
+                 {
+                     options.ListenAnyIP(config.GetValue<int>("Port"));
+                 })
+                .UseStartup<Startup>(); }
     }
 }

@@ -3,43 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Sodiqwebapplication.Model;
+using Sodiqwebapplication.Services;
 
 namespace Sodiqwebapplication.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/item")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class ItemController : ControllerBase
     {
-        // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        private readonly ItemService itemService;
+        public ItemController(ItemService itemService)
         {
-            return "value";
+            this.itemService = itemService;
         }
-
-        // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Route("sync")]
+        public async void syncItems()
         {
+            itemService.syncWithApi();
         }
 
-        // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void patchItem(long id, [FromBody] ItemDTO itemDTO)
         {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            itemService.updateItem(id, itemDTO);
         }
     }
 }
