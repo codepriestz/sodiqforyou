@@ -73,8 +73,8 @@ namespace Sodiqwebapplication.Services.Impl
             return item;
         }
         private bool itemAlreadyExists(long itemId){
-            return false;
-            //return this._ItemRepository.filterBy(item => item.ItemId == itemId).Count>0;
+      
+            return this._ItemRepository.filterBy(item => item.ItemId == itemId).Count>0;
         }
 
         public void updateItem(long id, ItemDTO itemDTO)
