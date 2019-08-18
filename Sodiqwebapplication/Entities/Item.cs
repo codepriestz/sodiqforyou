@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,6 +8,7 @@ namespace Sodiqwebapplication.Entities
 {
     public class Item
     {
+        [Key]
         public long Id { get; set; }
         public long ItemId { get; set; }
        
@@ -42,6 +44,5 @@ namespace Sodiqwebapplication.Entities
 
         public List<Image> Images { get; set; }
         public String SubSections { get; set; }
-        public Dictionary<String, List<String>> SubSectionsMap { get; set; }
     }
 }

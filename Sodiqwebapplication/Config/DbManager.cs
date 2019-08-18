@@ -16,5 +16,6 @@ namespace Sodiqwebapplication.Config
 
         public DbSet<Item> items { get; set; }
         public DbSet<Image> images { get; set; }
+        public DbSet<OldItem> oldItems { get; set; }
     }
 }

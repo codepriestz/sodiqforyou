@@ -13,6 +13,5 @@ namespace Sodiqwebapplication.Model
         public String ImageId { get; set; }
         public String Url { get; set; }
         public Dictionary<String, String> OtherImagesUrl { get; set; }
-        public Dictionary<String, String> OtherImagesUrlMap { get; set; }
     }
 }

@@ -39,6 +39,9 @@ namespace Sodiqwebapplication.Repository
 
         public Item save(Item item)
         {
+            OldItem oldItem =new OldItem();
+            Utils.Util.propertyCopy(item, oldItem);
+            this._dbManager.Add(oldItem);
            var entityItem= this._dbManager.Add(item);
             this._dbManager.SaveChanges();
             return entityItem.Entity;
