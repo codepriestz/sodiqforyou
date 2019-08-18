@@ -33,8 +33,8 @@ namespace Sodiqwebapplication.Entities
         public String Address { get; set; }
         public String Email { get; set; }
         public String PhoneNumber { get; set; }
-        public int PinIconColor { get; set; }
-        public int PinIconUrl { get; set; }
+        public String PinIconColor { get; set; }
+        public String PinIconUrl { get; set; }
         public int PinIconWidth { get; set; }
         public int PinIconHeight { get; set; }
         public String WebSite { get; set; }

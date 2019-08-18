@@ -1,5 +1,6 @@
 ﻿using Sodiqwebapplication.Entities;
 using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace Sodiqwebapplication.Model
 {
     public class ItemDTO
     {
-        public long Id { get; set; }
+        [JsonProperty(PropertyName ="id")]
         public long ItemId { get; set; }
 
         public String Type { get; set; }
@@ -34,15 +35,15 @@ namespace Sodiqwebapplication.Model
         public String Address { get; set; }
         public String Email { get; set; }
         public String PhoneNumber { get; set; }
-        public int PinIconColor { get; set; }
-        public int PinIconUrl { get; set; }
+        public String PinIconColor { get; set; }
+        public String PinIconUrl { get; set; }
         public int PinIconWidth { get; set; }
         public int PinIconHeight { get; set; }
         public String WebSite { get; set; }
         public Boolean CommentsEnabled { get; set; }
 
-        public List<Image> Images { get; set; }
-        public String SubSections { get; set; }
+        public List<ImageDTO> Images { get; set; }
+        public Dictionary<String, List<String>> SubSections { get; set; }
         public Dictionary<String, List<String>> SubSectionsMap { get; set; }
     }
 }

@@ -31,6 +31,16 @@ namespace Sodiqwebapplication.Services.Impl
             {
                 throw new Exception($"Error while calling Api, Status Code: {result.StatusCode}, Reason: {result.ReasonPhrase}");
             }
+            try{
+                //var contentAsString = await result.Content.ReadAsStringAsync();
+                //Console.WriteLine(contentAsString);
+                var content = (ItemApiData)(await result.Content.ReadAsAsync(typeof(ItemApiData)));
+                return;
+            }
+            catch(Exception e){
+                Console.WriteLine(e.StackTrace);
+            }
+           
             return;
         }
 
@@ -50,11 +60,12 @@ namespace Sodiqwebapplication.Services.Impl
                 }
                 PropertyInfo prop = item.GetType().GetProperty(property.Name, BindingFlags.Public | BindingFlags.Instance);
 
-                if (null != prop && prop.CanWrite)
+                if (null != prop && prop.CanWrite && prop.PropertyType.Equals(property.GetType()))
                 {
                     prop.SetValue(item, value, null);
                 }
             }
+            this._ItemRepository.update(item);
              
         }
     }

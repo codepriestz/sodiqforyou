@@ -37,8 +37,8 @@ namespace Sodiqwebapplication
                 options.UseSqlServer(Configuration.GetConnectionString("mssql"));
             
             }, Configuration.GetValue<int>("PoolSize"));
-            services.AddSingleton<ItemRepository, ItemRepositoryImpl>();
-            services.AddSingleton<ItemService, ItemServiceImpl>();
+            services.AddScoped<ItemRepository, ItemRepositoryImpl>();
+            services.AddScoped<ItemService, ItemServiceImpl>();
         }
         
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
